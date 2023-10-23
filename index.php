@@ -1,3 +1,6 @@
+<?php
+include_once("connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +14,12 @@
         tr,th{
             padding:  8px;
         }
-        th {
+        th,td{
             border-left: 1px solid rgb(217, 217, 217);
+            border-bottom: 1px solid rgb(217, 217, 217);
+            padding:  8px;
         }
-        tr:nth-child(even){
-            background-color: rgb(94, 115, 179);
-        }
+        
     </style>
 </head>
 <body>
@@ -27,6 +30,17 @@
             <th>Email Id</th>
             <th>Mobile</th>
             <th>Photo</th>
+        </tr>
+        <?php
+        $query = mysqli_query($conn, "SELECT * from fetch_data");
+        $row = mysqli_fetch_object($query);
+        ?>
+        <tr>
+            <td><?php echo $row->Name; ?></td>
+            <td><?php echo $row->DOB; ?></td>
+            <td><?php echo $row->Email; ?></td>
+            <td><?php echo $row->Mobile; ?></td>
+            <td><?php echo $row->Photo; ?></td>
         </tr>
     </table>
 </body>
